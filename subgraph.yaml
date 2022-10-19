@@ -1,0 +1,29 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AtlanteanAnalytics
+    network: mumbai
+    source:
+      address: "0xf79e8DB74369f6Af66fa42C5D2162C08C6893E2d"
+      abi: AtlanteanAnalytics
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - BeaconUpgraded
+        - Upgraded
+      abis:
+        - name: AtlanteanAnalytics
+          file: ./abis/AtlanteanAnalytics.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+      file: ./src/atlantean-analytics.ts
