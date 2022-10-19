@@ -1,6 +1,6 @@
-type ExampleEntity @entity {
+type EncodedTransaction @entity {
   id: ID!
-  count: BigInt!
-  previousAdmin: Bytes! # address
-  newAdmin: Bytes! # address
+  contract_address: Bytes! # address
+  tx_encoded_args: Bytes! # bytes
+  identifier: Bytes! # bytes32
 }

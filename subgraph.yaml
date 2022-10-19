@@ -13,17 +13,11 @@ dataSources:
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - AdminChanged
-        - BeaconUpgraded
-        - Upgraded
+        - SendTransaction
       abis:
         - name: AtlanteanAnalytics
           file: ./abis/AtlanteanAnalytics.json
       eventHandlers:
-        - event: AdminChanged(address,address)
-          handler: handleAdminChanged
-        - event: BeaconUpgraded(indexed address)
-          handler: handleBeaconUpgraded
-        - event: Upgraded(indexed address)
-          handler: handleUpgraded
+        - event: SendTransaction(indexed bytes32,indexed address,bytes)
+          handler: handleSendTransaction
       file: ./src/atlantean-analytics.ts
